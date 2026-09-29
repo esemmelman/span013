@@ -59,8 +59,8 @@ function render() {
         if (correct) score++;
         field.classList.add(correct ? 'correct' : 'incorrect');
         feedback.textContent = correct
-          ? 'Correct — 1 out of 1 point.'
-          : `Incorrect — 0 out of 1 point. Correct answer: ${item.choices[item.answer]}`;
+          ? 'Correct'
+          : `Correct Answer is ${item.choices[item.answer]}`;
         field.querySelectorAll('input').forEach(radio => { radio.disabled = true; });
         updateScore();
       });
