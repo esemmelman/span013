@@ -63,11 +63,12 @@ function showQuestion(focus = false) {
   }
   const item = order[current];
   const field = document.createElement('fieldset');
-  const legend = document.createElement('legend');
+  const legend = document.createElement('h2');
+  legend.id = 'question-title';
+  field.setAttribute('aria-labelledby', legend.id);
   legend.lang = 'es';
   legend.tabIndex = -1;
   legend.textContent = `${current + 1}. ${item.question}`;
-  field.append(legend);
   const feedback = document.createElement('p');
   feedback.className = 'feedback';
   feedback.id = 'feedback';
@@ -114,7 +115,7 @@ function showQuestion(focus = false) {
     });
   });
   field.append(feedback);
-  container.append(field);
+  container.append(legend, field);
   if (focus) legend.focus();
 }
 
