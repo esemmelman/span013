@@ -31,7 +31,7 @@ label:has(input:disabled) { cursor: default; }
 .word:hover, .word[aria-pressed="true"] { background: #cce4d5; }
 .answer-row { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
 .answer-row fieldset { flex: 1; margin: 0; }
-.question-navigation { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+.question-navigation { flex: none; align-self: flex-start; }
 #next { font-size: 1.1rem; padding: 16px 24px; }
 @media (max-width: 600px) { .answer-row { gap: 8px; } #next { padding: 16px 10px; } }
 .incorrect label:has(input:checked) { background: #8b1e24; border-color: #8b1e24; color: white; }

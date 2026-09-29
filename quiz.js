@@ -95,7 +95,7 @@ function showQuestion(focus = false) {
         const navigation = document.createElement('div');
         navigation.className = 'question-navigation';
         navigation.append(next);
-        field.prepend(navigation);
+        answerRow.append(navigation);
       }
     });
   });
