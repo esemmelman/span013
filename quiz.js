@@ -19,9 +19,6 @@ function shuffle(items) {
 function updateScore() {
   document.getElementById('progress-text').textContent = `${answered} of ${questions.length} answered`;
   document.getElementById('progress').value = answered;
-  document.getElementById('score').textContent = answered === questions.length
-    ? `Final score: ${score} out of ${questions.length} (${Math.round(score / questions.length * 100)}%)`
-    : `Score: ${score} correct · ${answered} answered`;
 }
 
 function enableTranslations(legend, item) {
@@ -63,6 +60,9 @@ function showQuestion(focus = false) {
   }
   const item = order[current];
   const field = document.createElement('fieldset');
+  const answerRow = document.createElement('div');
+  answerRow.className = 'answer-row';
+  answerRow.append(field);
   const legend = document.createElement('h2');
   legend.id = 'question-title';
   field.setAttribute('aria-labelledby', legend.id);
@@ -109,12 +109,12 @@ function showQuestion(focus = false) {
         const navigation = document.createElement('div');
         navigation.className = 'question-navigation';
         navigation.append(next);
-        field.prepend(navigation);
+        answerRow.append(navigation);
       }
     });
   });
   field.append(feedback);
-  container.append(legend, field);
+  container.append(legend, answerRow);
   if (focus) legend.focus();
 }
 

@@ -21,8 +21,6 @@ button:hover { background: #104b38; }
 .correct { border-color: #176149; }
 .incorrect { border-color: #ae430e; }
 .incorrect .feedback, #notice { color: #923509; }
-#results { padding: 24px; background: #e7f1eb; border-radius: 16px; margin: 24px 0; }
-#results h2 { margin: 0; }
 footer { margin-top: 48px; font-size: 1rem; color: #52625c; }
 [hidden] { display: none !important; }
 @media (max-width: 600px) { main { padding: 28px 14px; } fieldset { padding: 16px 10px; } label { padding: 14px 10px; gap: 10px; } }
@@ -31,7 +29,10 @@ footer { margin-top: 48px; font-size: 1rem; color: #52625c; }
 label:has(input:disabled) { cursor: default; }
 .word { display: inline; padding: 3px 4px; border-radius: 5px; background: #e7f1eb; color: #172e39; font: inherit; text-decoration: underline dotted; }
 .word:hover, .word[aria-pressed="true"] { background: #cce4d5; }
-.question-navigation { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+.answer-row { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+.answer-row fieldset { flex: 1; margin: 0; }
+.question-navigation { flex: none; }
 #next { font-size: 1.1rem; padding: 16px 24px; }
+@media (max-width: 600px) { .answer-row { gap: 8px; } #next { padding: 16px 10px; } }
 .incorrect label:has(input:checked) { background: #fff0e8; border-color: #ae430e; }
 label.right-answer { background: #ccebd5; border: 4px solid #176149; }
