@@ -7,7 +7,15 @@ const questions = [
       "Where do you go during the week?",
       "Who do you go out with on weekends?"
     ],
-    "answer": 0
+    "answer": 0,
+    "wordTranslations": [
+      "Where to",
+      "you go",
+      "the",
+      "ends",
+      "of",
+      "week"
+    ]
   },
   {
     "question": "¿Cómo eres?",
@@ -17,7 +25,11 @@ const questions = [
       "What do you like?",
       "What would you like to be?"
     ],
-    "answer": 1
+    "answer": 1,
+    "wordTranslations": [
+      "What … like",
+      "you are"
+    ]
   },
   {
     "question": "¿Qué le dices a tu abuelita cuando te da un regalo?",
@@ -27,7 +39,20 @@ const questions = [
       "What do you say to your grandmother when she gives you a gift?",
       "What do you give your grandmother when she thanks you for a gift?"
     ],
-    "answer": 2
+    "answer": 2,
+    "wordTranslations": [
+      "What",
+      "to her",
+      "you say",
+      "to",
+      "your",
+      "grandmother",
+      "when",
+      "to you",
+      "she gives",
+      "a",
+      "gift"
+    ]
   },
   {
     "question": "¿Dónde estás ahora mismo?",
@@ -37,7 +62,13 @@ const questions = [
       "Where were you just now?",
       "Where are you right now?"
     ],
-    "answer": 3
+    "answer": 3,
+    "wordTranslations": [
+      "Where",
+      "you are",
+      "right now",
+      "this very moment"
+    ]
   },
   {
     "question": "¿Cuántas clases tienes este año?",
@@ -47,7 +78,14 @@ const questions = [
       "How many classes did you have last year?",
       "How many classes do you want to take next year?"
     ],
-    "answer": 0
+    "answer": 0,
+    "wordTranslations": [
+      "How many",
+      "classes",
+      "you have",
+      "this",
+      "year"
+    ]
   },
   {
     "question": "Generalmente, ¿a qué hora vienes a clase?",
@@ -57,7 +95,16 @@ const questions = [
       "Generally, how often do you come to class?",
       "Generally, who comes to class with you?"
     ],
-    "answer": 1
+    "answer": 1,
+    "wordTranslations": [
+      "Generally",
+      "at",
+      "what",
+      "time",
+      "you come",
+      "to",
+      "class"
+    ]
   },
   {
     "question": "¿Conoces a muchas personas de esta clase?",
@@ -67,7 +114,16 @@ const questions = [
       "Do you know many people in this class?",
       "Do you want to meet many people in this class?"
     ],
-    "answer": 2
+    "answer": 2,
+    "wordTranslations": [
+      "Do you know",
+      "[marks people]",
+      "many",
+      "people",
+      "in",
+      "this",
+      "class"
+    ]
   },
   {
     "question": "¿Siempre obedeces a tus padres?",
@@ -77,7 +133,14 @@ const questions = [
       "Do you always help your parents?",
       "Do you always obey your parents?"
     ],
-    "answer": 3
+    "answer": 3,
+    "wordTranslations": [
+      "Always",
+      "you obey",
+      "[marks people]",
+      "your",
+      "parents"
+    ]
   },
   {
     "question": "¿Haces la tarea todos los días?",
@@ -87,7 +150,15 @@ const questions = [
       "Do you do homework all day?",
       "Did you do homework every day?"
     ],
-    "answer": 0
+    "answer": 0,
+    "wordTranslations": [
+      "Do you do",
+      "the",
+      "homework",
+      "every",
+      "the",
+      "days"
+    ]
   },
   {
     "question": "¿Qué traes a clase?",
@@ -97,7 +168,13 @@ const questions = [
       "Who brings you to class?",
       "What do you look for in class?"
     ],
-    "answer": 1
+    "answer": 1,
+    "wordTranslations": [
+      "What",
+      "you bring",
+      "to",
+      "class"
+    ]
   },
   {
     "question": "¿Cuántas horas al día ves la tele?",
@@ -107,7 +184,16 @@ const questions = [
       "How many hours a day do you watch TV?",
       "How many TV shows do you watch each day?"
     ],
-    "answer": 2
+    "answer": 2,
+    "wordTranslations": [
+      "How many",
+      "hours",
+      "per",
+      "day",
+      "you watch",
+      "the",
+      "TV"
+    ]
   },
   {
     "question": "¿Sabes la respuesta a esta pregunta?",
@@ -117,7 +203,15 @@ const questions = [
       "Do you remember asking this question?",
       "Do you know the answer to this question?"
     ],
-    "answer": 3
+    "answer": 3,
+    "wordTranslations": [
+      "Do you know",
+      "the",
+      "answer",
+      "to",
+      "this",
+      "question"
+    ]
   },
   {
     "question": "¿Con quiénes sales esta noche?",
@@ -127,7 +221,14 @@ const questions = [
       "Where are you going out tonight?",
       "Who are you going to see tonight?"
     ],
-    "answer": 0
+    "answer": 0,
+    "wordTranslations": [
+      "With",
+      "whom",
+      "you go out",
+      "this",
+      "night"
+    ]
   },
   {
     "question": "¿Dónde pones los libros de texto?",
@@ -137,6 +238,14 @@ const questions = [
       "Where did you put the textbooks?",
       "Where do you keep your notebooks?"
     ],
-    "answer": 1
+    "answer": 1,
+    "wordTranslations": [
+      "Where",
+      "you put",
+      "the",
+      "books",
+      "of",
+      "text"
+    ]
   }
 ];
