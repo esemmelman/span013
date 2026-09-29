@@ -1,86 +1,77 @@
 const form = document.getElementById('quiz');
 const container = document.getElementById('questions');
-const results = document.getElementById('results');
 const retry = document.getElementById('retry');
-const notice = document.getElementById('notice');
-let graded = false;
+let order = [];
+let score = 0;
+let answered = 0;
+
+function shuffle(items) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function updateScore() {
+  document.getElementById('progress-text').textContent = `${answered} of ${questions.length} answered`;
+  document.getElementById('progress').value = answered;
+  document.getElementById('score').textContent = answered === questions.length
+    ? `Final score: ${score} out of ${questions.length} (${Math.round(score / questions.length * 100)}%)`
+    : `Score: ${score} correct · ${answered} answered`;
+}
 
 function render() {
-  graded = false;
+  const previous = order;
+  order = shuffle(questions);
+  if (order.every((item, index) => item === previous[index])) order.push(order.shift());
+  score = 0;
+  answered = 0;
   container.replaceChildren();
-  questions.forEach((item, index) => {
+  order.forEach((item, index) => {
     const field = document.createElement('fieldset');
     const legend = document.createElement('legend');
     legend.lang = 'es';
     legend.textContent = `${index + 1}. ${item.question}`;
     field.append(legend);
-    const choices = item.choices.map((text, value) => ({text, value}));
-    for (let i = choices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [choices[i], choices[j]] = [choices[j], choices[i]];
-    }
-    choices.forEach(choice => {
+    const feedback = document.createElement('p');
+    feedback.className = 'feedback';
+    feedback.id = `feedback-${index}`;
+    feedback.setAttribute('aria-live', 'polite');
+    let graded = false;
+    shuffle(item.choices.map((text, value) => ({text, value}))).forEach(choice => {
       const label = document.createElement('label');
       const input = document.createElement('input');
       input.type = 'radio';
       input.name = `q${index}`;
       input.value = choice.value;
+      input.setAttribute('aria-describedby', feedback.id);
       const text = document.createElement('span');
       text.textContent = choice.text;
       label.append(input, text);
       field.append(label);
+      input.addEventListener('change', () => {
+        if (graded) return;
+        graded = true;
+        const correct = choice.value === item.answer;
+        answered++;
+        if (correct) score++;
+        field.classList.add(correct ? 'correct' : 'incorrect');
+        feedback.textContent = correct
+          ? 'Correct — 1 out of 1 point.'
+          : `Incorrect — 0 out of 1 point. Correct answer: ${item.choices[item.answer]}`;
+        field.querySelectorAll('input').forEach(radio => { radio.disabled = true; });
+        updateScore();
+      });
     });
+    field.append(feedback);
     container.append(field);
   });
-  notice.textContent = '';
-  results.hidden = true;
-  retry.hidden = true;
-  document.getElementById('check').hidden = false;
-  updateProgress();
+  updateScore();
 }
 
-function updateProgress() {
-  const answered = container.querySelectorAll('input:checked').length;
-  document.getElementById('progress-text').textContent = `${answered} of ${questions.length} answered`;
-  document.getElementById('progress').value = answered;
-  notice.textContent = '';
-}
-
-form.addEventListener('change', updateProgress);
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  if (graded) return;
-  const fields = [...container.querySelectorAll('fieldset')];
-  const missing = fields.find(field => !field.querySelector('input:checked'));
-  if (missing) {
-    notice.textContent = 'Please answer all 14 questions before checking your score.';
-    missing.querySelector('input').focus();
-    return;
-  }
-  let score = 0;
-  fields.forEach((field, index) => {
-    const correct = Number(field.querySelector('input:checked').value) === questions[index].answer;
-    if (correct) score++;
-    field.classList.add(correct ? 'correct' : 'incorrect');
-    const feedback = document.createElement('p');
-    feedback.className = 'feedback';
-    feedback.textContent = correct ? 'Correct!' : `Correct answer: ${questions[index].choices[questions[index].answer]}`;
-    field.append(feedback);
-    field.querySelectorAll('input').forEach(input => { input.disabled = true; });
-  });
-  graded = true;
-  results.replaceChildren();
-  const heading = document.createElement('h2');
-  heading.id = 'score';
-  heading.textContent = `You scored ${score} out of 14 (${Math.round(score / 14 * 100)}%)`;
-  const message = document.createElement('p');
-  message.textContent = score === 14 ? 'Perfect score! You understood every question.' : 'Review the feedback above, then try again to practice.';
-  results.append(heading, message);
-  results.hidden = false;
-  retry.hidden = false;
-  document.getElementById('check').hidden = true;
-  results.focus();
-});
+form.addEventListener('submit', event => event.preventDefault());
 retry.addEventListener('click', () => {
   render();
   container.querySelector('input').focus();
