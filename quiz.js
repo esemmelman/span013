@@ -60,7 +60,7 @@ function render() {
         field.classList.add(correct ? 'correct' : 'incorrect');
         feedback.textContent = correct
           ? 'Correct'
-          : `Correct Answer is ${item.choices[item.answer]}`;
+          : `Correct Answer: ${item.choices[item.answer]}`;
         field.querySelectorAll('input').forEach(radio => { radio.disabled = true; });
         updateScore();
       });
