@@ -106,11 +106,10 @@ function showQuestion(focus = false) {
         next.textContent = 'Next';
         next.lang = 'en';
         next.addEventListener('click', advance, {once: true});
-        const ending = document.createElement('span');
-        ending.className = 'question-ending';
-        const lastWord = legend.querySelector('.word:last-of-type');
-        lastWord.replaceWith(ending);
-        ending.append(lastWord, next);
+        const navigation = document.createElement('div');
+        navigation.className = 'question-navigation';
+        navigation.append(next);
+        field.prepend(navigation);
       }
     });
   });

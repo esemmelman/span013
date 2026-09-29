@@ -31,7 +31,7 @@ footer { margin-top: 48px; font-size: 1rem; color: #52625c; }
 label:has(input:disabled) { cursor: default; }
 .word { display: inline; padding: 3px 4px; border-radius: 5px; background: #e7f1eb; color: #172e39; font: inherit; text-decoration: underline dotted; }
 .word:hover, .word[aria-pressed="true"] { background: #cce4d5; }
-.question-ending { display: inline-flex; align-items: center; gap: 28px; max-width: 100%; flex-wrap: wrap; vertical-align: middle; }
+.question-navigation { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 #next { font-size: 1.1rem; padding: 16px 24px; }
 .incorrect label:has(input:checked) { background: #fff0e8; border-color: #ae430e; }
 label.right-answer { background: #ccebd5; border: 4px solid #176149; }
