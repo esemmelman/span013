@@ -91,22 +91,25 @@ function showQuestion(focus = false) {
       answered++;
       if (correct) score++;
       field.classList.add(correct ? 'correct' : 'incorrect');
-      feedback.textContent = correct ? 'Correct' : `Correct Answer: ${item.choices[item.answer]}`;
+      feedback.textContent = correct ? 'Correct' : 'Incorrect';
+      field.querySelector(`input[value="${item.answer}"]`).closest('label').classList.add('right-answer');
       field.querySelectorAll('input').forEach(radio => { radio.disabled = true; });
       updateScore();
       if (correct) {
         advanceTimer = setTimeout(advance, 2000);
       } else {
         enableTranslations(legend, item);
-        const hint = document.createElement('p');
-        hint.textContent = 'Click a Spanish word to see its English meaning. Click again to switch back.';
-        field.append(hint);
         const next = document.createElement('button');
         next.type = 'button';
         next.id = 'next';
-        next.textContent = current === order.length - 1 ? 'Finish quiz' : 'Next';
+        next.textContent = 'Next';
+        next.lang = 'en';
         next.addEventListener('click', advance, {once: true});
-        container.append(next);
+        const ending = document.createElement('span');
+        ending.className = 'question-ending';
+        const lastWord = legend.querySelector('.word:last-of-type');
+        lastWord.replaceWith(ending);
+        ending.append(lastWord, next);
       }
     });
   });
