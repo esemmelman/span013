@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practice understanding 14 Spanish questions with an extra-large-print interactive quiz.">
+  <title>Spanish Question Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="questions.js" defer></script>
+  <script src="quiz.js" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">SPANISH PRACTICE · 14 QUESTIONS</p>
+    <h1>What does it mean?</h1>
+    <p>Read each Spanish question. Choose its English translation, then check your answers.</p>
+    <a href="spanish-quiz.pdf">Download the printable quiz</a>
+  </header>
+  <noscript>Please enable JavaScript to take the quiz, or download the printable version above.</noscript>
+  <div class="progress" aria-live="polite"><span id="progress-text">0 of 14 answered</span><progress id="progress" value="0" max="14" aria-label="Questions answered"></progress></div>
+  <form id="quiz">
+    <div id="questions"></div>
+    <p id="notice" role="alert"></p>
+    <button type="submit" id="check">Check my answers</button>
+  </form>
+  <section id="results" hidden tabindex="-1" aria-labelledby="score"></section>
+  <button id="retry" type="button" hidden>Try again</button>
+  <footer>Your answers stay in this browser tab. No account needed.</footer>
+</main>
+</body>
+</html>
