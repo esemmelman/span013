@@ -63,10 +63,6 @@ function showQuestion(focus = false) {
   legend.lang = 'es';
   legend.tabIndex = -1;
   legend.textContent = `${current + 1}. ${item.question}`;
-  const feedback = document.createElement('p');
-  feedback.className = 'feedback';
-  feedback.id = 'feedback';
-  feedback.setAttribute('aria-live', 'polite');
   let graded = false;
   shuffle(item.choices.map((text, value) => ({text, value}))).forEach(choice => {
     const label = document.createElement('label');
@@ -74,7 +70,6 @@ function showQuestion(focus = false) {
     input.type = 'radio';
     input.name = 'answer';
     input.value = choice.value;
-    input.setAttribute('aria-describedby', feedback.id);
     const text = document.createElement('span');
     text.textContent = choice.text;
     label.append(input, text);
@@ -85,7 +80,6 @@ function showQuestion(focus = false) {
       const correct = choice.value === item.answer;
       if (correct) score++;
       field.classList.add(correct ? 'correct' : 'incorrect');
-      feedback.textContent = correct ? 'Correct' : 'Incorrect';
       field.querySelector(`input[value="${item.answer}"]`).closest('label').classList.add('right-answer');
       field.querySelectorAll('input').forEach(radio => { radio.disabled = true; });
       if (correct) {
@@ -105,7 +99,6 @@ function showQuestion(focus = false) {
       }
     });
   });
-  field.append(feedback);
   container.append(legend, answerRow);
   if (focus) legend.focus();
 }

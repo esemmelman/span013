@@ -34,5 +34,5 @@ label:has(input:disabled) { cursor: default; }
 .question-navigation { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 #next { font-size: 1.1rem; padding: 16px 24px; }
 @media (max-width: 600px) { .answer-row { gap: 8px; } #next { padding: 16px 10px; } }
-.incorrect label:has(input:checked) { background: #fff0e8; border-color: #ae430e; }
-label.right-answer { background: #ccebd5; border: 4px solid #176149; }
+.incorrect label:has(input:checked) { background: #8b1e24; border-color: #8b1e24; color: white; }
+label.right-answer, label.right-answer:has(input:checked) { background: #14532d; border: 4px solid #14532d; color: white; }
